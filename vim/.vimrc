@@ -32,6 +32,12 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" Install sierra colorscheme if it doesn't exist yet
+if empty(glob('~/.vim/colors/sierra.vim'))
+    silent !curl -fLo ~/.vim/colors/sierra.vim --create-dirs
+        \ https://raw.githubusercontent.com/AlessandroYorba/Sierra/master/colors/sierra.vim
+endif
+
 Plug 'rust-lang/rust.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'fatih/vim-go'
