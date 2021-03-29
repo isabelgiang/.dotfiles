@@ -9,7 +9,8 @@ set hlsearch
 set smartcase	
 set ignorecase	
 set incsearch	
- 
+
+" Tabs
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -22,15 +23,14 @@ set backspace=indent,eol,start
 
 filetype plugin on
 let g:tex_flavor='latex'
+let g:asyncrun_open = 6
 
-" Install vim-plug if it doesn't installed yet
+" Install vim-plug if it hasn't been installed yet
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
-call plug#begin('~/.vim/plugged')
 
 " Install sierra colorscheme if it doesn't exist yet
 if empty(glob('~/.vim/colors/sierra.vim'))
@@ -38,19 +38,50 @@ if empty(glob('~/.vim/colors/sierra.vim'))
         \ https://raw.githubusercontent.com/AlessandroYorba/Sierra/master/colors/sierra.vim
 endif
 
-Plug 'rust-lang/rust.vim'
+call plug#begin('~/.vim/plugged')
+
 Plug 'davidhalter/jedi-vim'
-Plug 'fatih/vim-go'
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'romainl/flattened'
-Plug 'morhetz/gruvbox'
+
+" TypeScript
+Plug 'leafgarland/typescript-vim'
+
+" JavaScript
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'styled-components/vim-styled-components'
+
+" LaTeX
 Plug 'vim-latex/vim-latex'
+
+" Golang
+Plug 'fatih/vim-go'
+
+" Rust
 Plug 'rust-lang/rust.vim'
 
+" Racket
+Plug 'wlangstroth/vim-racket'
+
+" C/C++
+" YCM vim-plug support: https://github.com/ycm-core/YouCompleteMe/issues/1751
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
+
+" Task system for edit-compile-test cycle
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/asyncrun.vim'
+
 call plug#end()
+
+" add Motorola 68000 syntax highlights to Easy68k file extensions
+augroup filetypedetect
+    au BufRead,BufNewFile *.X68 setfiletype asm68k
+    au BufRead,BufNewFile *.X68 setfiletype asm68k
+augroup END
 
 filetype plugin indent on
 syntax on
