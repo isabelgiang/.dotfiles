@@ -14,10 +14,15 @@ set incsearch
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set noexpandtab
+set expandtab
 set smartindent
 set smarttab	
- 
+
+if has("autocmd")
+    " If the filetype is Makefile, do not expand tabs into spaces
+    autocmd FileType make set noexpandtab
+endif
+
 set undolevels=1000	
 set backspace=indent,eol,start	
 
@@ -86,3 +91,5 @@ augroup END
 filetype plugin indent on
 syntax on
 colorscheme sierra
+
+
