@@ -14,5 +14,8 @@ Clone the dotfiles into a bare repository:
 
 `git clone --bare git@github.com:hollowsunsets/.dotfiles.git $HOME/.dotfiles`
 
+Hide untracked files 
+`dotfiles config --local status.showUntrackedFiles no`
+
 Reference: https://www.atlassian.com/git/tutorials/dotfiles
 
