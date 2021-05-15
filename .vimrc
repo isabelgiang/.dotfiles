@@ -71,9 +71,14 @@ Plug 'rust-lang/rust.vim'
 " Racket
 Plug 'wlangstroth/vim-racket'
 
-" C/C++
+" AutoComplete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " YCM vim-plug support: https://github.com/ycm-core/YouCompleteMe/issues/1751
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" Uninstalling due to being poorly performing. Maybe try again later...
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+
+" C/C++
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 
 " Task system for edit-compile-test cycle
