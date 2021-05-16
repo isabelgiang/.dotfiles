@@ -44,12 +44,12 @@ case "${unameOut}" in
 esac
 
 # Source machine-specific aliases and environment variables
-if [[ machine == 'Mac' ]]; then
+if [[ $machine == 'Mac' ]]; then
   host="$(scutil --get ComputerName)"
-  if [[ host == 'malachite' ]]; then
+  if [[ $host == 'malachite' ]]; then
       source ~/.malachiterc
   fi
-  source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
