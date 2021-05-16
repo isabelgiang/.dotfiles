@@ -30,7 +30,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
 else
-   export EDITOR='mvim'
+   export EDITOR='nvim'
 fi
 
 # Check machine environment
@@ -47,7 +47,7 @@ esac
 if [[ $machine == 'Mac' ]]; then
   host="$(scutil --get ComputerName)"
   if [[ $host == 'malachite' ]]; then
-      source ~/.malachiterc
+    source $HOME/.malachiterc
   fi
   source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
