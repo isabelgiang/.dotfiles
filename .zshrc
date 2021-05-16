@@ -5,17 +5,23 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+
+# Install powerline10k if it doesn't exist
+if [[ ! -e ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+fi
 
 # oh-my-zsh theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # oh-my-zsh plugins
-plugins=(git)
+plugins=(
+  git docker arcanist colorize pip python brew osx
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -26,14 +32,6 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
    export EDITOR='mvim'
 fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
 
 # Check machine environment
 # https://stackoverflow.com/questions/3466166/how-to-check-if-running-in-cygwin-mac-or-linux
@@ -51,6 +49,7 @@ if [[ machine == 'Mac' ]]; then
   if [[ host == 'malachite' ]]; then
       source ~/.malachiterc
   fi
+  source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -64,7 +63,8 @@ kitty + complete setup zsh | source /dev/stdin
 
 # Start Python REPL with pypython
 export PYTHONSTARTUP=$HOME/.pythonstartup
-export PATH="/usr/local/sbin:/usr/local/go/bin/:$PATH"
+
+export PATH="/usr/local/sbin:$PATH:/usr/local/go/bin"
 
 # Edit commands in Vim
 autoload -U edit-command-line
