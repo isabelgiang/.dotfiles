@@ -45,7 +45,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -58,6 +58,10 @@ Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'styled-components/vim-styled-components'
+
+
+" Python
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 
 " LaTeX
 Plug 'vim-latex/vim-latex'
@@ -78,12 +82,16 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Uninstalling due to being poorly performing. Maybe try again later...
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
+" Terraform
+Plug 'hashivim/vim-terraform'
+
 " C/C++
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 
 " Task system for edit-compile-test cycle
 Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
+
 
 call plug#end()
 
