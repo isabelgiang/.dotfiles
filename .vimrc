@@ -75,6 +75,9 @@ Plug 'rust-lang/rust.vim'
 " Racket
 Plug 'wlangstroth/vim-racket'
 
+" C#
+Plug 'OmniSharp/omnisharp-vim'
+
 " AutoComplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
