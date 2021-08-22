@@ -18,6 +18,18 @@ set expandtab
 set smartindent
 set smarttab	
 
+" gutter space for LSP info
+set signcolumn=yes
+
+" increased time for LSP code actions
+set updatetime=100
+
+" Highlight yanked text
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
+
 if has("autocmd")
     " If the filetype is Makefile, do not expand tabs into spaces
     autocmd FileType make set noexpandtab
@@ -77,6 +89,8 @@ Plug 'wlangstroth/vim-racket'
 
 " C#
 Plug 'OmniSharp/omnisharp-vim'
+
+let g:OmniSharp_timeout = 5
 
 " AutoComplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
