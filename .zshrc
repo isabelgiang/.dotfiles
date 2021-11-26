@@ -20,7 +20,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # oh-my-zsh plugins
 plugins=(
-  git docker arcanist colorize pip python brew osx
+  git docker arcanist colorize pip python brew macos 
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -65,6 +65,7 @@ kitty + complete setup zsh | source /dev/stdin
 export PYTHONSTARTUP=$HOME/.pythonstartup
 
 export PATH="/usr/local/sbin:$PATH:/usr/local/go/bin"
+export PATH=$(go env GOPATH)/bin:$PATH
 
 # Edit commands in Vim
 autoload -U edit-command-line
@@ -76,3 +77,13 @@ alias typora="open -a typora"
 
 # Dotfiles management
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
+# Use Exuberant Ctags instead of default MacOS ctags
+alias ctags="`brew --prefix`/bin/ctags"
+alias generate-ctags='ctags --recurse=yes'
+
+# Go path
+export GOPATH="$HOME/Code/go"
+
+# Add Rust cargos to PATH
+source $HOME/.cargo/env

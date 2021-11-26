@@ -110,7 +110,12 @@ Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
 
 
+" Vue
+Plug 'posva/vim-vue'
+
 call plug#end()
+            
+let g:go_metalinter_autosave = 1
 
 " add Motorola 68000 syntax highlights to Easy68k file extensions
 augroup filetypedetect
