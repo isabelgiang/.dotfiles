@@ -5,8 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -20,7 +18,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # oh-my-zsh plugins
 plugins=(
-  git docker arcanist colorize pip python brew macos 
+  git docker arcanist colorize pip python brew macos zsh-fzf-history-search 
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -59,7 +57,9 @@ fi
 # Kitty autocompletion
 autoload -Uz compinit
 compinit
-kitty + complete setup zsh | source /dev/stdin
+if [[ -f kitty ]]; then 
+  kitty + complete setup zsh | source /dev/stdin
+fi
 
 # Start Python REPL with pypython
 export PYTHONSTARTUP=$HOME/.pythonstartup
@@ -82,8 +82,6 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias ctags="`brew --prefix`/bin/ctags"
 alias generate-ctags='ctags --recurse=yes'
 
-# Go path
-export GOPATH="$HOME/Code/go"
-
 # Add Rust cargos to PATH
 source $HOME/.cargo/env
+eval "$(chef shell-init zsh)"

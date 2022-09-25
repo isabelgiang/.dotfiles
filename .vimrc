@@ -99,6 +99,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Uninstalling due to being poorly performing. Maybe try again later...
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
+" PowerShell
+Plug 'pprovost/vim-ps1'
+
 " Terraform
 Plug 'hashivim/vim-terraform'
 
